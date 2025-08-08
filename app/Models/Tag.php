@@ -11,4 +11,9 @@ class Tag extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+
+    public function jobs(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Job::class);
+    }
 }

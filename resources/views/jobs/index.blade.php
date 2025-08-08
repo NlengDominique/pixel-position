@@ -1,11 +1,11 @@
 <x-layout>
     <div class="space-y-10">
-
         <section class=" text-center pt-6">
-            <h1 class="font-bold text-4xl">Let's find your next job</h1>
-            <form action="" class="mt-6">
-                <input type="text" class="w-full max-w-xl border-white/10 px-5 py-4 rounded-xl bg-white/5" placeholder="Job title, keywords or company">
-            </form>
+            <h1 class="font-bold text-4xl mb-6">Let's find your next job</h1>
+
+            <x-forms.form action="/search">
+                <x-forms.input :label="false" name="q" placeholder="Job title, keywords or company"/>
+            </x-forms.form>
         </section>
         <section class="pt-10">
 
@@ -37,8 +37,6 @@
                 @foreach($jobs as $job)
                     <x-job-card-wide :$job/>
                 @endforeach
-
-
             </div>
         </section>
     </div>

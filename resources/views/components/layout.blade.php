@@ -13,7 +13,7 @@
         }
     </style>
 </head>
-<body class="bg-[#060606] text-white ">
+<body class="bg-[#060606] text-white pb-20 ">
 <div class="container mx-auto px-10">
     <nav class="flex justify-between items-center py-4 border-b border-white/10">
         <div>
@@ -27,9 +27,27 @@
             <a href="">Salaries</a>
             <a href="">Companies</a>
         </div>
-        <div>
-            <a href=""> Post a job</a>
-        </div>
+        @auth
+            <div class="space-x-6 font-bold flex">
+                <a href="/jobs/create"> Post a job</a>
+                <form method="POST" action="/logout">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">Log out</button>
+                </form>
+            </div>
+
+
+        @endauth
+
+        @guest
+            <div class="space-x-6 font-bold">
+                <a href="/register">Sign Up</a>
+                <a href="/login">Log in</a>
+
+            </div>
+        @endguest
+
     </nav>
 
     <main class="mt-10 max-w-[968px] mx-auto">
